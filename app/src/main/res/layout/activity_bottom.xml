@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="65dp"
+    android:layout_width="match_parent" android:layout_height="100dp"
     android:gravity="center_vertical"
-    android:padding="4dp"
-    android:id="@+id/bottomlayout">
+    android:padding="10dp"
+    android:layout_alignParentBottom="true"
+    android:id="@+id/bottomlayout"
+    android:background="@drawable/background_bottom">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ivLogo"
-        android:layout_alignParentBottom="false"
-        android:layout_alignParentRight="false"
-        android:layout_alignParentEnd="false"
-        android:layout_marginRight="2dp"
+        android:layout_marginRight="15dp"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:src="@drawable/dollar" />
@@ -20,21 +19,18 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AA费用小助手"
+        android:text="@string/aa_title"
         android:id="@+id/txBottomTitle"
         android:layout_centerVertical="true"
        android:layout_toRightOf="@id/ivLogo"
-        android:textSize="25sp" />
+        android:textSize="30sp"
+        android:textColor="@android:color/background_light" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/txBottomTitle"
-        android:layout_toEndOf="@+id/txBottomTitle"
-        android:layout_marginLeft="59dp"
-        android:layout_marginStart="59dp"
         android:src="@drawable/app"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"/>
 </RelativeLayout>

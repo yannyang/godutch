@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="36dp"
+    android:layout_width="match_parent" android:layout_height="50dp"
     android:textAlignment="center"
     android:gravity="center_vertical"
-    android:id="@+id/toplayout">
+    android:id="@+id/toplayout"
+    android:background="@drawable/background_top">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AA计费小助手"
+        android:text="@string/aa_title"
+        android:textSize="30dp"
         android:id="@+id/tvTitle"
         android:layout_alignParentLeft="true"
-        android:layout_margin="4dp"/>
+        android:layout_marginLeft="20dp"
+        android:textColor="@android:color/background_light"
+        />
 </RelativeLayout>

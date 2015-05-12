@@ -2,12 +2,14 @@
      android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    >
-<include android:layout="@layout/activity_top"/>
+    android:background="@drawable/background_main">
+<include layout="@layout/activity_top"/>
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:id="@+id/ll01"
+        android:orientation="vertical">
 
     </LinearLayout>
-    <include android:layout="@layout/activity_bottom"/>
+    <include layout="@layout/activity_bottom" />
 </RelativeLayout>
