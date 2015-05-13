@@ -37,4 +37,8 @@ public class MainActivity extends FrameActivity {
     private void BindData() {
         gvMainBody.setAdapter(mMainItemAdapter);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> f10554b7f2cf896c7adf30c4ebe4ddd80ab190db

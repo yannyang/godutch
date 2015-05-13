@@ -12,6 +12,10 @@ import yann.study.R;
 
 /**
  * Created by Administrator on 2015/5/13.
+<<<<<<< HEAD
+=======
+ * 实现主体应用菜单连接
+>>>>>>> f10554b7f2cf896c7adf30c4ebe4ddd80ab190db
  */
 public class MainItemAdapter extends BaseAdapter {
 
