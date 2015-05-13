@@ -4,4 +4,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="aa_title">AA费用小助手</string>
+    <string name="body_title_record_keeping">记录消费</string>
+    <string name="body_title_keeping_querying">消费查询</string>
+    <string name="body_title_count_manage">统计管理</string>
+    <string name="body_title_accountbook_manage">账本管理</string>
+    <string name="body_title_classcs_manage">类别管理</string>
+    <string name="body_title_porsonnal_manage">人员管理</string>
 </resources>
