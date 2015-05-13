@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <GridLayout
+    <GridView
+        android:id="@+id/gvMainBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:columnCount="3"
-        android:rowCount="3"
-        android:id="@+id/glMainBody"></GridLayout>
+        android:layout_centerInParent="true"
+        android:verticalSpacing="50dp"
+        android:numColumns="3"
+        android:listSelector="@drawable/grid_selector"
+         />
 </RelativeLayout>
