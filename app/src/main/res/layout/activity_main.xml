@@ -5,18 +5,12 @@
     android:background="@drawable/background_main">
 <include layout="@layout/activity_top"/>
     <LinearLayout
-<<<<<<< HEAD
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/llMainBody"
-=======
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/ll_main_body"
         android:layout_centerInParent="true"
->>>>>>> f10554b7f2cf896c7adf30c4ebe4ddd80ab190db
         android:orientation="vertical">
-
     </LinearLayout>
     <include layout="@layout/activity_bottom" />
 </RelativeLayout>
