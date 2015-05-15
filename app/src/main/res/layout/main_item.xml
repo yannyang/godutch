@@ -1,41 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-<<<<<<< HEAD
-=======
-    android:layout_centerVertical="true"
->>>>>>> f10554b7f2cf896c7adf30c4ebe4ddd80ab190db
-    android:id="@+id/llMainItem"
-    android:orientation="vertical">
+    android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <ImageView
-<<<<<<< HEAD
+
+<ImageView
+
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/ivMainIcon"
         android:layout_gravity="center" />
-=======
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ivMainIcon" />
->>>>>>> f10554b7f2cf896c7adf30c4ebe4ddd80ab190db
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
         android:id="@+id/tvMainTitle"
-<<<<<<< HEAD
         android:textSize="12sp"
         android:textColor="@android:color/black"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:layout_gravity="center" />
-=======
-        android:textSize="20sp"
-        android:textColor="@android:color/black"
-        android:gravity="center_vertical|center_horizontal"
-        android:padding="10dp"
-        android:layout_margin="20dp" />
->>>>>>> f10554b7f2cf896c7adf30c4ebe4ddd80ab190db
 </LinearLayout>

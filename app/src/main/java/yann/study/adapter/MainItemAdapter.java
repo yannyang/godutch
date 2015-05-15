@@ -11,11 +11,8 @@ import android.widget.TextView;
 import yann.study.R;
 
 /**
- * Created by Administrator on 2015/5/13.
-<<<<<<< HEAD
-=======
- * ÊµÏÖÖ÷ÌåÓ¦ÓÃ²Ëµ¥Á¬½Ó
->>>>>>> f10554b7f2cf896c7adf30c4ebe4ddd80ab190db
+ * Created by yann on 2015/5/13.
+ * åŠŸèƒ½ä¸»èœå•é¡¹ç›®é€‚é…å™¨ *
  */
 public class MainItemAdapter extends BaseAdapter {
 

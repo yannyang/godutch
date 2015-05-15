@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.widget.Toast;
 
-import java.util.Objects;
-
 /**
  * Created by Administrator on 2015/5/12.
  * 自己创建Activity基础类，方便一些简便操作
@@ -21,7 +19,7 @@ public class BaseActivity extends Activity {
 
     /**
      * 打开一个新Activity
-     * @param mClass
+     * @param mClass 需要打开的Activity类名
      */
     protected void OpenActivity(Class<?> mClass){
         Intent _intent= new Intent(this,mClass);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
+
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,15 +13,4 @@
         android:numColumns="3"
         android:listSelector="@drawable/grid_selector"
          />
-=======
-    android:layout_width="match_parent" android:layout_height="match_parent">
-
-    <GridView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/gvMainBody"
-        android:numColumns="3"
-        android:layout_centerInParent="true"
-        />
->>>>>>> f10554b7f2cf896c7adf30c4ebe4ddd80ab190db
 </RelativeLayout>
