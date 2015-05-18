@@ -1,6 +1,7 @@
 package yann.study.controls;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -21,24 +22,37 @@ public class SlideMenuView {
     private List mList;
     private boolean mMenuState;
     private RelativeLayout mRelativeLayout;
+    private int mRelativeLayoutHeight;
+    private OnSlideMenuListener mOnSlideMenuListener;
+
+    public interface OnSlideMenuListener{
+        public abstract void onSlideMenuItemClick(View pView,SliderMenuItem pSliderMenuItem);
+    }
 
     public SlideMenuView(Activity pActivity) {
 
         mActivity = pActivity;
+        mOnSlideMenuListener= (OnSlideMenuListener) pActivity;
         InitVariable();
-        InitView();
         InitListeners();
     }
 
     private void Open() {
+        Log.i("yann","Open方法："+mRelativeLayout.getHeight() + "");
         RelativeLayout.LayoutParams _LayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+        //RelativeLayout.LayoutParams _LayoutParams=(RelativeLayout.LayoutParams)mRelativeLayout.getLayoutParams();
+      //  _LayoutParams.height=RelativeLayout.LayoutParams.MATCH_PARENT;
+     //   _LayoutParams.width=RelativeLayout.LayoutParams.MATCH_PARENT;
         _LayoutParams.addRule(RelativeLayout.BELOW, R.id.layTopBox);
         mRelativeLayout.setLayoutParams(_LayoutParams);
         mMenuState = false;
     }
 
     private void Close() {
-        RelativeLayout.LayoutParams _LayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 100);
+        Log.i("yann","Close方法"+mRelativeLayout.getHeight() + "");
+        RelativeLayout.LayoutParams _LayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, mRelativeLayoutHeight);
+      //  RelativeLayout.LayoutParams _LayoutParams=(RelativeLayout.LayoutParams)mRelativeLayout.getLayoutParams();
+       // _LayoutParams.height=100;
         _LayoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         mRelativeLayout.setLayoutParams(_LayoutParams);
         mMenuState = true;
@@ -66,11 +80,8 @@ public class SlideMenuView {
     private void InitVariable() {
         mRelativeLayout = (RelativeLayout) mActivity.findViewById(R.id.layBottomBox);
         mList = new ArrayList();
+        mRelativeLayoutHeight=mRelativeLayout.getLayoutParams().height;
         mMenuState = true;
-    }
-
-    private void InitView() {
-
     }
 
     private void InitListeners() {
@@ -81,15 +92,17 @@ public class SlideMenuView {
 
         @Override
         public void onClick(View v) {
-            Toggle();
+             Toggle();
+
         }
     }
 
     private class OnSlideMenuItemClick implements AdapterView.OnItemClickListener {
 
         @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        public void onItemClick(AdapterView parent, View view, int position, long id) {
+            SliderMenuItem _SliderMenuItem=(SliderMenuItem)parent.getItemAtPosition(position);
+            mOnSlideMenuListener.onSlideMenuItemClick(view,_SliderMenuItem);
         }
     }
 }

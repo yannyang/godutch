@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layBottomBox"
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:layout_alignParentBottom="true"
-    android:background="@drawable/background_bottom"
-    android:gravity="center_vertical"
-    android:padding="10dp">
+   >
     <RelativeLayout
+        android:background="@drawable/background_bottom"
         android:id="@+id/layBottomBar"
         android:layout_width="match_parent"
         android:layout_height="100dp">
@@ -18,6 +16,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
             android:src="@drawable/dollar" />
         <TextView
             android:id="@+id/txBottomTitle"
@@ -41,11 +40,12 @@
         android:id="@+id/layBottomListViewBox"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/background_material_light"
         android:layout_below="@id/layBottomBar">
         <ListView
             android:id="@+id/lvSlideList"
             style="@style/StyleListView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
     </LinearLayout>
 </RelativeLayout>
