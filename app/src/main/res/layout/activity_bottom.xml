@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/layBottomBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="100dp">
         <ImageView
             android:id="@+id/ivLogo"
             android:layout_width="30dp"
@@ -46,6 +46,6 @@
             android:id="@+id/lvSlideList"
             style="@style/StyleListView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </RelativeLayout>

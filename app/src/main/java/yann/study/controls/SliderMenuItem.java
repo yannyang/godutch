@@ -8,6 +8,11 @@ public class SliderMenuItem {
     private int mItemId;
     private String mTitle;
 
+    public SliderMenuItem(int pItemId, String pTitle) {
+        this.mItemId = pItemId;
+        this.mTitle = pTitle;
+    }
+
     public int getItemId() {
         return mItemId;
     }
