@@ -28,7 +28,6 @@ public class MainActivity extends FrameActivity implements SlideMenuView.OnSlide
         InitView();
         BindData();
         CreateSlideMenu(R.array.SlideMenuItem);
-
     }
 
     private void InitVariable() {
