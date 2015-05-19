@@ -4,14 +4,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import yann.study.R;
 import yann.study.activity.base.FrameActivity;
 import yann.study.adapter.MainItemAdapter;
 import yann.study.controls.SlideMenuView;
-import yann.study.controls.SliderMenuItem;
+import yann.study.controls.SlideMenuItem;
 
 
 public class MainActivity extends FrameActivity implements SlideMenuView.OnSlideMenuListener{
@@ -23,19 +21,19 @@ public class MainActivity extends FrameActivity implements SlideMenuView.OnSlide
         super.onCreate(savedInstanceState);
         Log.i("yann", "程序启动");
         setContentView(R.layout.activity_main);
-        AppendMainBody(R.layout.main_body);
-        InitVariable();
-        InitView();
-        BindData();
-        CreateSlideMenu(R.array.SlideMenuItem);
+        appendMainBody(R.layout.main_body);
+        initVariable();
+        initView();
+        bindData();
+        createSlideMenu(R.array.SlideMenuItem);
 
     }
 
-    private void InitVariable() {
+    private void initVariable() {
         mMainItemAdapter = new MainItemAdapter(this);
     }
 
-    private void InitView() {
+    private void initView() {
         gvMainBody = (GridView) findViewById(R.id.gvMainBody);
     }
 
@@ -43,13 +41,13 @@ public class MainActivity extends FrameActivity implements SlideMenuView.OnSlide
 
     }
 
-    private void BindData() {
+    private void bindData() {
         gvMainBody.setAdapter(mMainItemAdapter);
     }
 
     @Override
-    public void onSlideMenuItemClick(View pView, SliderMenuItem pSliderMenuItem) {
-        ShowMsg(pSliderMenuItem.getTitle());
+    public void onSlideMenuItemClick(View pView, SlideMenuItem pSlideMenuItem) {
+        showMsg(pSlideMenuItem.getTitle());
     }
 }
 

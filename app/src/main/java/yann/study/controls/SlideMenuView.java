@@ -26,18 +26,18 @@ public class SlideMenuView {
     private OnSlideMenuListener mOnSlideMenuListener;
 
     public interface OnSlideMenuListener{
-        public abstract void onSlideMenuItemClick(View pView,SliderMenuItem pSliderMenuItem);
+        public abstract void onSlideMenuItemClick(View pView,SlideMenuItem pSlideMenuItem);
     }
 
     public SlideMenuView(Activity pActivity) {
 
         mActivity = pActivity;
         mOnSlideMenuListener= (OnSlideMenuListener) pActivity;
-        InitVariable();
-        InitListeners();
+        initVariable();
+        initListeners();
     }
 
-    private void Open() {
+    private void open() {
         Log.i("yann","Open方法："+mRelativeLayout.getHeight() + "");
         RelativeLayout.LayoutParams _LayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
         //RelativeLayout.LayoutParams _LayoutParams=(RelativeLayout.LayoutParams)mRelativeLayout.getLayoutParams();
@@ -48,7 +48,7 @@ public class SlideMenuView {
         mMenuState = false;
     }
 
-    private void Close() {
+    private void close() {
         Log.i("yann","Close方法"+mRelativeLayout.getHeight() + "");
         RelativeLayout.LayoutParams _LayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, mRelativeLayoutHeight);
       //  RelativeLayout.LayoutParams _LayoutParams=(RelativeLayout.LayoutParams)mRelativeLayout.getLayoutParams();
@@ -58,33 +58,33 @@ public class SlideMenuView {
         mMenuState = true;
     }
 
-    public void Toggle() {
+    public void toggle() {
         if (mMenuState) {
-            Open();
+            open();
         } else {
-            Close();
+            close();
         }
     }
 
-    public void Add(SliderMenuItem pSliderMenuItem) {
-        mList.add(pSliderMenuItem);
+    public void add(SlideMenuItem pSlideMenuItem) {
+        mList.add(pSlideMenuItem);
     }
 
-    public void BindList() {
+    public void bindList() {
         MenuItemAdapter _MenuItemAdapter = new MenuItemAdapter(mActivity, mList);
         ListView _ListView = (ListView) mActivity.findViewById(R.id.lvSlideList);
         _ListView.setAdapter(_MenuItemAdapter);
         _ListView.setOnItemClickListener(new OnSlideMenuItemClick());
     }
 
-    private void InitVariable() {
+    private void initVariable() {
         mRelativeLayout = (RelativeLayout) mActivity.findViewById(R.id.layBottomBox);
         mList = new ArrayList();
         mRelativeLayoutHeight=mRelativeLayout.getLayoutParams().height;
         mMenuState = true;
     }
 
-    private void InitListeners() {
+    private void initListeners() {
         mRelativeLayout.setOnClickListener(new OnSlideMenuClick());
     }
 
@@ -92,7 +92,7 @@ public class SlideMenuView {
 
         @Override
         public void onClick(View v) {
-             Toggle();
+             toggle();
 
         }
     }
@@ -101,8 +101,8 @@ public class SlideMenuView {
 
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
-            SliderMenuItem _SliderMenuItem=(SliderMenuItem)parent.getItemAtPosition(position);
-            mOnSlideMenuListener.onSlideMenuItemClick(view,_SliderMenuItem);
+            SlideMenuItem _SlideMenuItem =(SlideMenuItem)parent.getItemAtPosition(position);
+            mOnSlideMenuListener.onSlideMenuItemClick(view, _SlideMenuItem);
         }
     }
 }

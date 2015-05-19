@@ -9,7 +9,7 @@ import java.util.List;
 
 import yann.study.R;
 import yann.study.adapter.base.GodutchBaseAdapter;
-import yann.study.controls.SliderMenuItem;
+import yann.study.controls.SlideMenuItem;
 
 /**
  * Created by yann on 2015/5/13.
@@ -39,8 +39,8 @@ public class MenuItemAdapter extends GodutchBaseAdapter {
         }else{
             _Holder=(Holder)convertView.getTag();
         }
-        SliderMenuItem _SliderMenuItem=(SliderMenuItem)getList().get(position);
-        _Holder.tvMenuListItem.setText(_SliderMenuItem.getTitle());
+        SlideMenuItem _SlideMenuItem =(SlideMenuItem)getList().get(position);
+        _Holder.tvMenuListItem.setText(_SlideMenuItem.getTitle());
         return convertView;
     }
 }

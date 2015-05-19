@@ -13,7 +13,7 @@ public class BaseActivity extends Activity {
      * 显示浮出信息
      * @param pMsg 需要显示的信息
      */
-    protected void ShowMsg(String pMsg){
+    protected void showMsg(String pMsg){
         Toast.makeText(this,pMsg,Toast.LENGTH_SHORT).show();
     }
 
@@ -21,7 +21,7 @@ public class BaseActivity extends Activity {
      * 打开一个新Activity
      * @param mClass 需要打开的Activity类名
      */
-    protected void OpenActivity(Class<?> mClass){
+    protected void openActivity(Class<?> mClass){
         Intent _intent= new Intent(this,mClass);
        startActivity(_intent);
     }
