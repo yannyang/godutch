@@ -32,14 +32,14 @@ public class MenuItemAdapter extends GodutchBaseAdapter {
         Holder _Holder;
         if(convertView==null){
 
-            convertView=getLayoutInflater().inflate(R.layout.main_item,null);
+            convertView=getLayoutInflater().inflate(R.layout.menu_list_item,null);
             _Holder=new Holder();
             _Holder.tvMenuListItem=(TextView)convertView.findViewById(R.id.tvListItemTitle);
             convertView.setTag(_Holder);
         }else{
             _Holder=(Holder)convertView.getTag();
         }
-        SliderMenuItem _SliderMenuItem=(SliderMenuItem)getmList().get(position);
+        SliderMenuItem _SliderMenuItem=(SliderMenuItem)getList().get(position);
         _Holder.tvMenuListItem.setText(_SliderMenuItem.getTitle());
         return convertView;
     }

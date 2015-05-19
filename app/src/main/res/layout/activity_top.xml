@@ -3,7 +3,6 @@
     android:layout_width="match_parent" android:layout_height="50dp"
     android:textAlignment="center"
     android:gravity="center_vertical"
-    android:id="@+id/layTopBox"
     android:background="@drawable/background_top">
 
     <TextView

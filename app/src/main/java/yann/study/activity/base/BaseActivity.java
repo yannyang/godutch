@@ -14,7 +14,7 @@ public class BaseActivity extends Activity {
      * @param pMsg 需要显示的信息
      */
     protected void ShowMsg(String pMsg){
-        Toast.makeText(this,pMsg,Toast.LENGTH_SHORT);
+        Toast.makeText(this,pMsg,Toast.LENGTH_SHORT).show();
     }
 
     /**

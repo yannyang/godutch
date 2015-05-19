@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * Created by yann on 2015/5/18.
- * ÏîÄ¿ÊÊÅäÆ÷
+ * ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 public abstract class  GodutchBaseAdapter extends BaseAdapter {
     private List mList;
@@ -25,7 +25,7 @@ public abstract class  GodutchBaseAdapter extends BaseAdapter {
         return mContext;
     }
 
-    public List getmList() {
+    public List getList() {
         return mList;
     }
 
