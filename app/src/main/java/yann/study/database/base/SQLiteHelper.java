@@ -8,14 +8,19 @@ import java.util.ArrayList;
 
 /**
  * Created by yann on 2015/5/19.
- * Êý¾Ý¿â²Ù×÷Àà
+ * ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 public class SQLiteHelper extends SQLiteOpenHelper {
 
     private static SQLiteDataBaseConfig mSQLiteDataBaseConfig;
     private Context mContext;
     private static SQLiteHelper INSTANCE;
-    private SQLiteHelper(Context pContext){
+
+    public interface SQLiteDataTable{
+        public void onCreate(SQLiteDatabase pSQLiteDatabase);
+        public void onUpgrate(SQLiteDatabase pSQLiteDatabase);
+    }
+        private SQLiteHelper(Context pContext){
         super(pContext,mSQLiteDataBaseConfig.getDatabaseName(),null,mSQLiteDataBaseConfig.getVesion());
         mContext=pContext;
     }

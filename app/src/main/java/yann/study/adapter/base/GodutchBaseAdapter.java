@@ -28,6 +28,9 @@ public abstract class  GodutchBaseAdapter extends BaseAdapter {
     public List getList() {
         return mList;
     }
+    public void setList(List pList){
+        mList=pList;
+    }
 
     public LayoutInflater getLayoutInflater() {
         return mLayoutInflater;

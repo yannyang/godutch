@@ -17,7 +17,7 @@ import yann.study.utility.DateTools;
  * 用户数据操作类
  */
 public class SQLiteDALUser extends SQLiteDALBase {
-    protected SQLiteDALUser(Context pContext) {
+    public SQLiteDALUser(Context pContext) {
         super(pContext);
     }
 

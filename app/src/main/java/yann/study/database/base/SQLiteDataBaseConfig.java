@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Created by yann on 2015/5/19.
- * Êı¾İ¿âÅäÖÃ
+ * èœå•è§†å›¾
  */
 public class SQLiteDataBaseConfig {
     private static final String DATABASE_NAME="GoDutchDataBase";

@@ -3,13 +3,16 @@ package yann.study.adapter;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
 import yann.study.R;
 import yann.study.adapter.base.GodutchBaseAdapter;
+import yann.study.business.UserBusiness;
 import yann.study.controls.SlideMenuItem;
+import yann.study.model.UserModel;
 
 /**
  * Created by yann on 2015/5/13.
@@ -17,10 +20,15 @@ import yann.study.controls.SlideMenuItem;
  */
 public class UserItemAdapter extends GodutchBaseAdapter {
     private  class Holder{
-         TextView tvMenuListItem;
+        ImageView ivUserIcon;
+         TextView tvUserListName;
     }
-    public UserItemAdapter(Context pContext, List pList) {
-        super(pContext, pList);
+    public UserItemAdapter(Context pContext)
+    {
+        super(pContext, null);
+        UserBusiness _UserBusiness=new UserBusiness(pContext);
+        List<UserModel> _UserModels=_UserBusiness.getNotHideUser();
+        setList(_UserModels);
     }
 
     private Context mContext;
@@ -32,15 +40,17 @@ public class UserItemAdapter extends GodutchBaseAdapter {
         Holder _Holder;
         if(convertView==null){
 
-            convertView=getLayoutInflater().inflate(R.layout.menu_list_item,null);
+            convertView=getLayoutInflater().inflate(R.layout.user_list,null);
             _Holder=new Holder();
-            _Holder.tvMenuListItem=(TextView)convertView.findViewById(R.id.tvListItemTitle);
+            _Holder.ivUserIcon=(ImageView)convertView.findViewById(R.id.ivUserIcon);
+            _Holder.tvUserListName=(TextView)convertView.findViewById(R.id.tvUserListName);
             convertView.setTag(_Holder);
         }else{
             _Holder=(Holder)convertView.getTag();
         }
-        SlideMenuItem _SlideMenuItem =(SlideMenuItem)getList().get(position);
-        _Holder.tvMenuListItem.setText(_SlideMenuItem.getTitle());
+        UserModel _UserModel = (UserModel) getList().get(position);
+        _Holder.ivUserIcon.setImageResource(R.drawable.user);
+        _Holder.tvUserListName.setText(_UserModel.getUserName());
         return convertView;
     }
 }

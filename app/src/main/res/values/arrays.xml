@@ -6,4 +6,11 @@
         <item>建议反馈</item>
         <item>软件更新</item>
     </array>
+    <array name="SlideUserItem">
+        <item>增加用户</item>
+    </array>
+    <array name="InitUserName">
+        <item>张三</item>
+        <item>李四</item>
+    </array>
 </resources>

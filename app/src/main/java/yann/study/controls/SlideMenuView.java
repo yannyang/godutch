@@ -2,6 +2,7 @@ package yann.study.controls;
 
 import android.app.Activity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -86,6 +87,16 @@ public class SlideMenuView {
 
     private void initListeners() {
         mRelativeLayout.setOnClickListener(new OnSlideMenuClick());
+        mRelativeLayout.setFocusableInTouchMode(true);
+        mRelativeLayout.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(keyCode==KeyEvent.KEYCODE_MENU && event.getAction()==KeyEvent.ACTION_UP){
+                    toggle();
+                }
+                return false;
+            }
+        });
     }
 
     private class OnSlideMenuClick implements View.OnClickListener {
