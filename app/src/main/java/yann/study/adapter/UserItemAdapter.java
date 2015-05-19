@@ -15,11 +15,11 @@ import yann.study.controls.SlideMenuItem;
  * Created by yann on 2015/5/13.
  * 功能主菜单项目适配器 *
  */
-public class MenuItemAdapter extends GodutchBaseAdapter {
+public class UserItemAdapter extends GodutchBaseAdapter {
     private  class Holder{
          TextView tvMenuListItem;
     }
-    public MenuItemAdapter(Context pContext, List pList) {
+    public UserItemAdapter(Context pContext, List pList) {
         super(pContext, pList);
     }
 

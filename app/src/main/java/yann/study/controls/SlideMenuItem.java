@@ -4,11 +4,11 @@ package yann.study.controls;
  * Created by yann on 2015/5/15.
  * 菜单实体类
  */
-public class SliderMenuItem {
+public class SlideMenuItem {
     private int mItemId;
     private String mTitle;
 
-    public SliderMenuItem(int pItemId, String pTitle) {
+    public SlideMenuItem(int pItemId, String pTitle) {
         this.mItemId = pItemId;
         this.mTitle = pTitle;
     }

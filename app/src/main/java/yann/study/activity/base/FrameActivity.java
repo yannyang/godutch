@@ -8,7 +8,7 @@ import android.widget.RelativeLayout;
 
 import yann.study.R;
 import yann.study.controls.SlideMenuView;
-import yann.study.controls.SliderMenuItem;
+import yann.study.controls.SlideMenuItem;
 
 /**
  * Created by yann on 2015/5/12.
@@ -22,7 +22,7 @@ public class FrameActivity extends BaseActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
     }
     //根据视图ID增加到主布局中
-    protected void AppendMainBody(int pResID){
+    protected void appendMainBody(int pResID){
         LinearLayout _LinearLayout=(LinearLayout)findViewById(R.id.ll_main_body);
        View _View=View.inflate(this,pResID,null);
        // View _View= LayoutInflater.from(this).inflate(pResID,null);
@@ -30,16 +30,16 @@ public class FrameActivity extends BaseActivity {
         _LinearLayout.addView(_View, _LayoutParams);
     }
     //创建滑动菜单
-    protected void CreateSlideMenu(int pResId){
+    protected void createSlideMenu(int pResId){
         _SlideMenuView=new SlideMenuView(this);
         String[] _MenuItemArray=getResources().getStringArray(pResId);
 
         for (int i=0;i<_MenuItemArray.length;i++){
-            SliderMenuItem _SliderMenuItem=new SliderMenuItem(i,_MenuItemArray[i]);
+            SlideMenuItem _SlideMenuItem =new SlideMenuItem(i,_MenuItemArray[i]);
 
-            _SlideMenuView.Add(_SliderMenuItem);
+            _SlideMenuView.add(_SlideMenuItem);
         }
-        _SlideMenuView.BindList();
+        _SlideMenuView.bindList();
     }
 }
 

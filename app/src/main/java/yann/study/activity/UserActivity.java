@@ -12,7 +12,7 @@ import yann.study.controls.SlideMenuView;
 import yann.study.controls.SlideMenuItem;
 
 
-public class MainActivity extends FrameActivity implements SlideMenuView.OnSlideMenuListener{
+public class UserActivity extends FrameActivity implements SlideMenuView.OnSlideMenuListener{
     private GridView gvMainBody;
     private MainItemAdapter mMainItemAdapter;
 
