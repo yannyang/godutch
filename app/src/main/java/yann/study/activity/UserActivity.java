@@ -3,12 +3,10 @@ package yann.study.activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.GridView;
 import android.widget.ListView;
 
 import yann.study.R;
 import yann.study.activity.base.FrameActivity;
-import yann.study.adapter.MainItemAdapter;
 import yann.study.adapter.UserItemAdapter;
 import yann.study.controls.SlideMenuItem;
 import yann.study.controls.SlideMenuView;

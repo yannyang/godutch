@@ -6,34 +6,51 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
+import yann.study.utility.Reflection;
+
 /**
  * Created by yann on 2015/5/19.
- * ���ݿ������
+ * ���ݿ������?
  */
-public class SQLiteHelper extends SQLiteOpenHelper {
+public  class  SQLiteHelper extends SQLiteOpenHelper {
 
-    private static SQLiteDataBaseConfig mSQLiteDataBaseConfig;
+    private static SQLiteDataBaseConfig SQLITE_DATABASE_CONFIG;
     private Context mContext;
     private static SQLiteHelper INSTANCE;
+    private Reflection mReflection;
 
     public interface SQLiteDataTable{
         public void onCreate(SQLiteDatabase pSQLiteDatabase);
         public void onUpgrate(SQLiteDatabase pSQLiteDatabase);
     }
         private SQLiteHelper(Context pContext){
-        super(pContext,mSQLiteDataBaseConfig.getDatabaseName(),null,mSQLiteDataBaseConfig.getVesion());
+        super(pContext, SQLITE_DATABASE_CONFIG.getDatabaseName(), null, SQLITE_DATABASE_CONFIG.getVesion());
         mContext=pContext;
     }
   public static SQLiteHelper getInstance(Context pContext){
       if(INSTANCE==null){
+          SQLITE_DATABASE_CONFIG=SQLiteDataBaseConfig.getInstance(pContext);
           INSTANCE=new SQLiteHelper(pContext);
       }
       return INSTANCE;
   }
 
       @Override
-    public void onCreate(SQLiteDatabase db) {
-          ArrayList<String> _ArrayList=mSQLiteDataBaseConfig.GetTables();
+    public void onCreate(SQLiteDatabase pDatabase) {
+          ArrayList<String> _ArrayList=SQLITE_DATABASE_CONFIG.GetTables();
+          mReflection=new Reflection();
+          for (int i = 0; i <_ArrayList.size() ; i++) {
+              try {
+                  SQLiteDataTable _SQLiteDataTable= (SQLiteDataTable) mReflection.newInstance(
+                          _ArrayList.get(i),
+                          new Object[]{mContext},
+                          new Class[]{Context.class}
+                  );
+                  _SQLiteDataTable.onCreate(pDatabase);
+              } catch (Exception e) {
+                  e.printStackTrace();
+              }
+          }
     }
 
     @Override

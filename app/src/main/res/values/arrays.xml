@@ -13,4 +13,7 @@
         <item>张三</item>
         <item>李四</item>
     </array>
+    <array name="SQLiteDALClassName">
+        <item>SQLiteDALUser</item>
+    </array>
 </resources>

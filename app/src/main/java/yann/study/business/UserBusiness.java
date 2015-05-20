@@ -39,7 +39,7 @@ public class UserBusiness extends BaseBusiness {
         return mSqLiteDALUser.getUser(pCondition);
     }
     public List<UserModel> getNotHideUser() {
-        String _Condition="And State=1";
+        String _Condition=" And State=1";
         return mSqLiteDALUser.getUser(_Condition);
     }
     public UserModel getUserById(int pUserId) {
