@@ -55,7 +55,7 @@ public class SQLiteDALUser extends SQLiteDALBase {
     @Override
     public void onCreate(SQLiteDatabase pSQLiteDatabase) {
         StringBuilder _StringBuilder = new StringBuilder();
-        _StringBuilder.append("  Create  TABLE MAIN.[Temp_482723555](");
+        _StringBuilder.append("  Create  TABLE [User](");
         _StringBuilder.append(" [UserId] integer PRIMARY KEY ATUOINCREMENT NOT NULL");
         _StringBuilder.append(",[UserName] varchar(10) NOT NULL");
         _StringBuilder.append("  ,[CreateDate] datetime NOT NULL");
