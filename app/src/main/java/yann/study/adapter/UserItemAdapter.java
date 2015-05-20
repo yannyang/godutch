@@ -40,7 +40,7 @@ public class UserItemAdapter extends GodutchBaseAdapter {
         Holder _Holder;
         if(convertView==null){
 
-            convertView=getLayoutInflater().inflate(R.layout.user_list,null);
+            convertView=getLayoutInflater().inflate(R.layout.user_list_item,null);
             _Holder=new Holder();
             _Holder.ivUserIcon=(ImageView)convertView.findViewById(R.id.ivUserIcon);
             _Holder.tvUserListName=(TextView)convertView.findViewById(R.id.tvUserListName);

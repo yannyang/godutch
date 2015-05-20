@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.List;
 
@@ -55,13 +56,13 @@ public class SQLiteDALUser extends SQLiteDALBase {
     @Override
     public void onCreate(SQLiteDatabase pSQLiteDatabase) {
         StringBuilder _StringBuilder = new StringBuilder();
-        _StringBuilder.append("  Create  TABLE [User](");
-        _StringBuilder.append(" [UserId] integer PRIMARY KEY ATUOINCREMENT NOT NULL");
-        _StringBuilder.append(",[UserName] varchar(10) NOT NULL");
-        _StringBuilder.append("  ,[CreateDate] datetime NOT NULL");
-        _StringBuilder.append(",[State] integer NOT NULL");
-        _StringBuilder.append("     ) ;");
-
+        _StringBuilder.append("  Create  TABLE User(");
+        _StringBuilder.append("         [UserId] integer PRIMARY KEY AUTOINCREMENT NOT NULL");
+        _StringBuilder.append("         ,[UserName] varchar(10) NOT NULL");
+        _StringBuilder.append("         ,[CreateDate] datetime NOT NULL");
+        _StringBuilder.append("         ,[State] integer NOT NULL");
+        _StringBuilder.append("         ) ");
+        Log.i("yann",_StringBuilder.toString());
         pSQLiteDatabase.execSQL(_StringBuilder.toString());
 
         initDefaultData(pSQLiteDatabase);

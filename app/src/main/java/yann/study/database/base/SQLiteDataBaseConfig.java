@@ -11,7 +11,7 @@ import yann.study.R;
  * 数据库配置类
  */
 public class SQLiteDataBaseConfig {
-    private static final String DATABASE_NAME="GoDutchDatabase11";
+    private static final String DATABASE_NAME="GoDutchDatabase";
     private static final int VESION=1;
     private static SQLiteDataBaseConfig INSTANCE;
     private static  Context mContext;

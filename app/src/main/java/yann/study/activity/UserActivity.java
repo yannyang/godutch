@@ -21,8 +21,8 @@ public class UserActivity extends FrameActivity implements SlideMenuView.OnSlide
         super.onCreate(savedInstanceState);
         Log.i("yann", "用户管理程序启动");
         appendMainBody(R.layout.user_list);
-        initVariable();
         initView();
+        initVariable();
         bindData();
         createSlideMenu(R.array.SlideUserItem);
 
