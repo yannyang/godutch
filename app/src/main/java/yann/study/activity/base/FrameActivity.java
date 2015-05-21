@@ -16,13 +16,15 @@ import yann.study.controls.SlideMenuView;
  * Activity窗口基类，可将与业务相亲的功能封装在此类中
  */
 public class FrameActivity extends BaseActivity {
-  SlideMenuView _SlideMenuView;
+  SlideMenuView mSlideMenuView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-
+    }
+    protected void slideMenuToggle() {
+        mSlideMenuView.toggle();
     }
     //根据视图ID增加到主布局中
     protected void appendMainBody(int pResID){
@@ -34,15 +36,15 @@ public class FrameActivity extends BaseActivity {
     }
     //创建滑动菜单
     protected void createSlideMenu(int pResId){
-        _SlideMenuView=new SlideMenuView(this);
+        mSlideMenuView =new SlideMenuView(this);
         String[] _MenuItemArray=getResources().getStringArray(pResId);
 
         for (int i=0;i<_MenuItemArray.length;i++){
             SlideMenuItem _SlideMenuItem =new SlideMenuItem(i,_MenuItemArray[i]);
 
-            _SlideMenuView.add(_SlideMenuItem);
+            mSlideMenuView.add(_SlideMenuItem);
         }
-        _SlideMenuView.bindList();
+        mSlideMenuView.bindList();
     }
 }
 

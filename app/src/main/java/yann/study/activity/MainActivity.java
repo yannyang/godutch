@@ -46,10 +46,16 @@ public class MainActivity extends FrameActivity implements SlideMenuView.OnSlide
         gvMainBody.setAdapter(mMainItemAdapter);
     }
 
+
+
     @Override
     public void onSlideMenuItemClick(View pView, SlideMenuItem pSlideMenuItem) {
-        showMsg(pSlideMenuItem.getTitle());
+        slideMenuToggle();
+      /*  if (pSlideMenuItem.getItemID() == 0) {
+            ShowDatabaseBackupDialog();
+        }*/
     }
+
 
     private class onAppGridItemClickListener implements AdapterView.OnItemClickListener {
         @Override

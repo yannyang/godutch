@@ -61,4 +61,19 @@ public class UserBusiness extends BaseBusiness {
         return _UserModelList;
     }
 
+    public boolean isExistUserByUserName(String pUserName,Integer pUserID)
+    {
+        String _Condition = " And UserName = '" + pUserName + "'";
+        if(pUserID != null)
+        {
+            _Condition += " And UserId <> " + pUserID;
+        }
+        List _List = mSqLiteDALUser.getUser(_Condition);
+        if (_List.size() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
