@@ -39,6 +39,11 @@ public class SQLiteDALUser extends SQLiteDALBase {
         ContentValues _ContentValues=createParms(pUserModel);
         return getDatabase().update(getTableNameAndPK()[0],_ContentValues,pCondition,null)>0;
     }
+    public Boolean updateUser(String p_Condition,ContentValues pContentValues)
+    {
+        return getDatabase().update("User", pContentValues, p_Condition, null) > 0;
+    }
+
     public List<UserModel> getUser(String pCondition){
         String _SqlText="Select * From User Where 1=1 "+pCondition;
         return getList(_SqlText);

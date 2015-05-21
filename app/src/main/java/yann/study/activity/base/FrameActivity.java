@@ -2,6 +2,7 @@ package yann.study.activity.base;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
@@ -45,6 +46,27 @@ public class FrameActivity extends BaseActivity {
             mSlideMenuView.add(_SlideMenuItem);
         }
         mSlideMenuView.bindList();
+    }
+    protected void createMenu(Menu pMenu)
+    {
+        int _GroupID = 0;
+        int _Order = 0;
+        int[] p_ItemID = {1,2};
+
+        for(int i=0;i<p_ItemID.length;i++)
+        {
+            switch(p_ItemID[i])
+            {
+                case 1:
+                    pMenu.add(_GroupID, p_ItemID[i], _Order, R.string.MenuTextEdit);
+                    break;
+                case 2:
+                    pMenu.add(_GroupID, p_ItemID[i], _Order, R.string.MenuTextDelete);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
 
