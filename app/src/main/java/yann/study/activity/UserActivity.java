@@ -4,11 +4,15 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
+import android.view.ContextMenu.ContextMenuInfo;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import yann.study.R;
 import yann.study.activity.base.FrameActivity;
 import yann.study.adapter.UserItemAdapter;
@@ -19,10 +23,11 @@ import yann.study.model.UserModel;
 import yann.study.utility.RegexTools;
 
 
-public class UserActivity extends FrameActivity implements SlideMenuView.OnSlideMenuListener{
-    private ListView mListView;
+public class UserActivity extends FrameActivity implements SlideMenuView.OnSlideMenuListener {
+    private ListView mUserListView;
     private UserItemAdapter mUserItemAdapter;
     private UserBusiness mBusinessUser;
+    private UserModel mSelectModlUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,25 +37,69 @@ public class UserActivity extends FrameActivity implements SlideMenuView.OnSlide
         initView();
         initVariable();
         bindData();
+        initListeners();
         createSlideMenu(R.array.SlideUserItem);
 
     }
 
     private void initVariable() {
-        mUserItemAdapter = new UserItemAdapter(this);
+        mBusinessUser = new UserBusiness(this);
     }
 
     private void initView() {
-        mListView = (ListView) findViewById(R.id.lvUserList);
+        mUserListView = (ListView) findViewById(R.id.lvUserList);
     }
 
-    private void InitListeners() {
-
+    private void initListeners() {
+        registerForContextMenu(mUserListView);
     }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+        AdapterContextMenuInfo _AdapterContextMenuInfo = (AdapterContextMenuInfo) menuInfo;
+        ListAdapter _ListAdapter = mUserListView.getAdapter();
+
+        mSelectModlUser = (UserModel)_ListAdapter.getItem(_AdapterContextMenuInfo.position);
+
+        menu.setHeaderIcon(R.drawable.user);
+        menu.setHeaderTitle(mSelectModlUser.getUserName());
+
+        createMenu(menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case 1:
+                ShowUserAddOrEditDialog(mSelectModlUser);
+                break;
+            case 2:
+                delete();
+                break;
+            default:
+                break;
+        }
+
+        return super.onContextItemSelected(item);
+    }
+    private void delete() {
+        String _Message = getString(R.string.DialogMessageUserDelete,new Object[]{mSelectModlUser.getUserName()});
+        ShowAlertDialog(R.string.DialogTitleDelete,_Message,new OnDeleteClickListener());
+    }
+    private class OnDeleteClickListener implements DialogInterface.OnClickListener
+    {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            boolean _Result = mBusinessUser.hideUserByUserID(mSelectModlUser.getUserId());
+
+            if (_Result == true) {
+                bindData();
+            }
+        }
+    }
     private void bindData() {
         mUserItemAdapter = new UserItemAdapter(this);
-        mListView.setAdapter(mUserItemAdapter);
+        mUserListView.setAdapter(mUserItemAdapter);
     }
 
     @Override
@@ -61,8 +110,8 @@ public class UserActivity extends FrameActivity implements SlideMenuView.OnSlide
         }
 
     }
-    private void ShowUserAddOrEditDialog(UserModel pUserModel)
-    {
+
+    private void ShowUserAddOrEditDialog(UserModel pUserModel) {
         View _View = getLayouInflater().inflate(R.layout.user_add_or_edit, null);
 
         EditText _etUserName = (EditText) _View.findViewById(R.id.etUserName);
@@ -73,30 +122,28 @@ public class UserActivity extends FrameActivity implements SlideMenuView.OnSlide
 
         String _Title;
 
-        if(pUserModel == null)
-        {
-            _Title = getString(R.string.DialogTitleUser,new Object[]{getString(R.string.TitleAdd)});
-        }
-        else {
-            _Title = getString(R.string.DialogTitleUser,new Object[]{getString(R.string.TitleEdit)});
+        if (pUserModel == null) {
+            _Title = getString(R.string.DialogTitleUser, new Object[]{getString(R.string.TitleAdd)});
+        } else {
+            _Title = getString(R.string.DialogTitleUser, new Object[]{getString(R.string.TitleEdit)});
         }
 
         AlertDialog.Builder _Builder = new AlertDialog.Builder(this);
         _Builder.setTitle(_Title)
                 .setView(_View)
                 .setIcon(R.drawable.user)
-                .setNeutralButton(getString(R.string.ButtonTextSave), new OnAddOrEditUserListener(pUserModel,_etUserName,true))
-                .setNegativeButton(getString(R.string.ButtonTextCancel), new OnAddOrEditUserListener(null,null,false))
+                .setNeutralButton(getString(R.string.ButtonTextSave), new OnAddOrEditUserListener(pUserModel, _etUserName, true))
+                .setNegativeButton(getString(R.string.ButtonTextCancel), new OnAddOrEditUserListener(null, null, false))
                 .show();
     }
-    private class OnAddOrEditUserListener implements DialogInterface.OnClickListener
-    {
+
+
+    private class OnAddOrEditUserListener implements DialogInterface.OnClickListener {
         private UserModel mModelUser;
         private EditText etUserName;
         private boolean mIsSaveButton;
 
-        public OnAddOrEditUserListener(UserModel pModelUser,EditText petUserName,Boolean pIsSaveButton)
-        {
+        public OnAddOrEditUserListener(UserModel pModelUser, EditText petUserName, Boolean pIsSaveButton) {
             mModelUser = pModelUser;
             etUserName = petUserName;
             mIsSaveButton = pIsSaveButton;
@@ -104,8 +151,7 @@ public class UserActivity extends FrameActivity implements SlideMenuView.OnSlide
 
         @Override
         public void onClick(DialogInterface dialog, int which) {
-            if(mIsSaveButton == false)
-            {
+            if (mIsSaveButton == false) {
                 setAlertDialogIsClose(dialog, true);
                 return;
             }
@@ -119,24 +165,19 @@ public class UserActivity extends FrameActivity implements SlideMenuView.OnSlide
             boolean _CheckResult = RegexTools.IsChineseEnglishNum(_UserName);
 
             if (!_CheckResult) {
-                Toast.makeText(getApplicationContext(), getString(R.string.CheckDataTextChineseEnglishNum,new Object[]{etUserName.getHint()}),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.CheckDataTextChineseEnglishNum, new Object[]{etUserName.getHint()}), Toast.LENGTH_SHORT).show();
                 setAlertDialogIsClose(dialog, false);
                 return;
-            }
-            else {
+            } else {
                 setAlertDialogIsClose(dialog, true);
             }
-
-//            _CheckResult = mBusinessUser.isExistUserByUserName(_UserName, mModelUser.getUserId());
-            _CheckResult = mBusinessUser.isExistUserByUserName(_UserName, 1);
-
+            _CheckResult = mBusinessUser.isExistUserByUserName(_UserName, mModelUser.getUserId());
             if (_CheckResult) {
                 Toast.makeText(getApplicationContext(), getString(R.string.CheckDataTextUserExist), Toast.LENGTH_SHORT).show();
 
                 setAlertDialogIsClose(dialog, false);
                 return;
-            }
-            else {
+            } else {
                 setAlertDialogIsClose(dialog, true);
             }
 
@@ -146,15 +187,13 @@ public class UserActivity extends FrameActivity implements SlideMenuView.OnSlide
 
             if (mModelUser.getUserId() == 0) {
                 _Result = mBusinessUser.insertUser(mModelUser);
-            }
-            else {
+            } else {
                 _Result = mBusinessUser.updateUser(mModelUser);
             }
 
             if (_Result) {
                 bindData();
-            }
-            else {
+            } else {
                 Toast.makeText(UserActivity.this, getString(R.string.TipsAddFail), Toast.LENGTH_SHORT).show();
             }
         }

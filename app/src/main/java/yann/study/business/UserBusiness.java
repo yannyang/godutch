@@ -1,5 +1,6 @@
 package yann.study.business;
 
+import android.content.ContentValues;
 import android.content.Context;
 
 import java.util.ArrayList;
@@ -14,38 +15,52 @@ import yann.study.model.UserModel;
  * 人员管理业务处理
  */
 public class UserBusiness extends BaseBusiness {
-    SQLiteDALUser mSqLiteDALUser;
+    SQLiteDALUser mSQLiteDALUser;
 
     public UserBusiness(Context pContext) {
         super(pContext);
-        mSqLiteDALUser = new SQLiteDALUser(pContext);
+        mSQLiteDALUser = new SQLiteDALUser(pContext);
     }
+    public Boolean hideUserByUserID(int pUserID)
+    {
+        String _Condition = " UserID = " + pUserID;
+        ContentValues _ContentValues = new ContentValues();
+        _ContentValues.put("State", 0);
+        Boolean _Result = mSQLiteDALUser.updateUser(_Condition, _ContentValues);
 
+        if(_Result)
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     public boolean insertUser(UserModel pUserModel) {
-        return mSqLiteDALUser.insertUser(pUserModel);
+        return mSQLiteDALUser.insertUser(pUserModel);
     }
 
     public boolean deleteUserById(int pUserId) {
         String _Condition = "And UserId=" + pUserId;
-        return mSqLiteDALUser.deleteUser(_Condition);
+        return mSQLiteDALUser.deleteUser(_Condition);
     }
 
     public boolean updateUser(UserModel pUserModel) {
-        String _Condition = "And UserId=" + pUserModel.getUserId();
-        return mSqLiteDALUser.updateUser(_Condition, pUserModel);
+        String _Condition = "UserId=" + pUserModel.getUserId();
+        return mSQLiteDALUser.updateUser(_Condition, pUserModel);
     }
 
     private List<UserModel> getList(String pCondition) {
-        return mSqLiteDALUser.getUser(pCondition);
+        return mSQLiteDALUser.getUser(pCondition);
     }
     public List<UserModel> getNotHideUser() {
         String _Condition=" And State=1";
-        return mSqLiteDALUser.getUser(_Condition);
+        return mSQLiteDALUser.getUser(_Condition);
     }
     public UserModel getUserById(int pUserId) {
         String _Condition = "And UserId=" + pUserId;
         List<UserModel> _UserModel;
-        _UserModel = mSqLiteDALUser.getUser(_Condition);
+        _UserModel = mSQLiteDALUser.getUser(_Condition);
         if (_UserModel.size() == 1) {
             return _UserModel.get(0);
         } else {
@@ -68,7 +83,7 @@ public class UserBusiness extends BaseBusiness {
         {
             _Condition += " And UserId <> " + pUserID;
         }
-        List _List = mSqLiteDALUser.getUser(_Condition);
+        List _List = mSQLiteDALUser.getUser(_Condition);
         if (_List.size() > 0) {
             return true;
         } else {
