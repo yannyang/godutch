@@ -210,7 +210,7 @@ public class BusinessCategory extends BaseBusiness {
 	public ArrayAdapter GetRootCategoryArrayAdapter()
 	{
 		List _List = GetNotHideRootCategory();
-		_List.add(0,"--��ѡ��--");
+		_List.add(0,"--请选择--");
 		ArrayAdapter _ArrayAdapter = new ArrayAdapter(GetContext(), android.R.layout.simple_spinner_item, _List);
 		_ArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		return _ArrayAdapter;

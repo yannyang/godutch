@@ -5,16 +5,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import org.achartengine.ChartFactory;
+import org.achartengine.model.CategorySeries;
+import org.achartengine.renderer.DefaultRenderer;
+import org.achartengine.renderer.SimpleSeriesRenderer;
+
 import java.util.List;
 
 import yann.study.R;
 import yann.study.activity.base.FrameActivity;
 import yann.study.model.ModelCategoryTotal;
-
-import org.achartengine.ChartFactory;
-import org.achartengine.model.CategorySeries;
-import org.achartengine.renderer.DefaultRenderer;
-import org.achartengine.renderer.SimpleSeriesRenderer;
 
 
 public class ActivityCategoryChart extends FrameActivity {

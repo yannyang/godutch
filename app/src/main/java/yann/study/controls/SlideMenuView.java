@@ -22,7 +22,7 @@ public class SlideMenuView {
     private Activity mActivity;
     private List mList;
     private boolean mMenuState;
-    private RelativeLayout mRelativeLayout;
+    private RelativeLayout layBottomBox;
     private int mRelativeLayoutHeight;
     private OnSlideMenuListener mOnSlideMenuListener;
 
@@ -33,29 +33,35 @@ public class SlideMenuView {
     public SlideMenuView(Activity pActivity) {
 
         mActivity = pActivity;
-        mOnSlideMenuListener= (OnSlideMenuListener) pActivity;
-        initVariable();
-        initListeners();
+        initView();
+        if (pActivity instanceof OnSlideMenuListener) {
+            mOnSlideMenuListener = (OnSlideMenuListener) pActivity;
+            initVariable();
+            initListeners();
+        }
+    }
+    public void initView() {
+        layBottomBox = (RelativeLayout) mActivity.findViewById(R.id.layBottomBox);
     }
 
     private void open() {
-        Log.i("yann","Open方法："+mRelativeLayout.getHeight() + "");
+        Log.i("yann","Open方法："+ layBottomBox.getHeight() + "");
         RelativeLayout.LayoutParams _LayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-        //RelativeLayout.LayoutParams _LayoutParams=(RelativeLayout.LayoutParams)mRelativeLayout.getLayoutParams();
+        //RelativeLayout.LayoutParams _LayoutParams=(RelativeLayout.LayoutParams)layBottomBox.getLayoutParams();
       //  _LayoutParams.height=RelativeLayout.LayoutParams.MATCH_PARENT;
      //   _LayoutParams.width=RelativeLayout.LayoutParams.MATCH_PARENT;
         _LayoutParams.addRule(RelativeLayout.BELOW, R.id.layTopBox);
-        mRelativeLayout.setLayoutParams(_LayoutParams);
+        layBottomBox.setLayoutParams(_LayoutParams);
         mMenuState = false;
     }
 
     private void close() {
-        Log.i("yann","Close方法"+mRelativeLayout.getHeight() + "");
+        Log.i("yann","Close方法"+ layBottomBox.getHeight() + "");
         RelativeLayout.LayoutParams _LayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, mRelativeLayoutHeight);
-      //  RelativeLayout.LayoutParams _LayoutParams=(RelativeLayout.LayoutParams)mRelativeLayout.getLayoutParams();
+      //  RelativeLayout.LayoutParams _LayoutParams=(RelativeLayout.LayoutParams)layBottomBox.getLayoutParams();
        // _LayoutParams.height=100;
         _LayoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        mRelativeLayout.setLayoutParams(_LayoutParams);
+        layBottomBox.setLayoutParams(_LayoutParams);
         mMenuState = true;
     }
 
@@ -79,19 +85,19 @@ public class SlideMenuView {
     }
 
     private void initVariable() {
-        mRelativeLayout = (RelativeLayout) mActivity.findViewById(R.id.layBottomBox);
+        layBottomBox = (RelativeLayout) mActivity.findViewById(R.id.layBottomBox);
         mList = new ArrayList();
-        mRelativeLayoutHeight=mRelativeLayout.getLayoutParams().height;
+        mRelativeLayoutHeight= layBottomBox.getLayoutParams().height;
         mMenuState = true;
     }
 
     private void initListeners() {
-        mRelativeLayout.setOnClickListener(new OnSlideMenuClick());
-        mRelativeLayout.setFocusableInTouchMode(true);
-        mRelativeLayout.setOnKeyListener(new View.OnKeyListener() {
+        layBottomBox.setOnClickListener(new OnSlideMenuClick());
+        layBottomBox.setFocusableInTouchMode(true);
+        layBottomBox.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if(keyCode==KeyEvent.KEYCODE_MENU && event.getAction()==KeyEvent.ACTION_UP){
+                if (keyCode == KeyEvent.KEYCODE_MENU && event.getAction() == KeyEvent.ACTION_UP) {
                     toggle();
                 }
                 return false;
@@ -118,9 +124,9 @@ public class SlideMenuView {
     }
     public void RemoveBottomBox()
     {
-        RelativeLayout _MainLayout = (RelativeLayout)mActivity.findViewById(R.id.layMainBody);
-        _MainLayout.removeView(mRelativeLayout);
-        mRelativeLayout = null;
+        RelativeLayout _MainLayout = (RelativeLayout)mActivity.findViewById(R.id.layMainLayout);
+        _MainLayout.removeView(layBottomBox);
+        layBottomBox = null;
     }
 
 }

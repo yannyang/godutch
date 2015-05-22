@@ -135,7 +135,7 @@ public class ActivityCategoryAddOrEdit extends FrameActivity
 			mModelCategory.SetPath("");
 		}
 		mModelCategory.SetCategoryName(_CategoryName);
-		if(!spParentID.getSelectedItem().toString().equals("--��ѡ��--"))
+		if(!spParentID.getSelectedItem().toString().equals("--请选择--"))
 		{
 			ModelCategory _ModelCategory = (ModelCategory)spParentID.getSelectedItem();
 			if(_ModelCategory != null)
