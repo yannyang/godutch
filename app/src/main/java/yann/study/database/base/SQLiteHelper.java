@@ -24,7 +24,7 @@ public  class  SQLiteHelper extends SQLiteOpenHelper {
         public void onUpgrate(SQLiteDatabase pSQLiteDatabase);
     }
         private SQLiteHelper(Context pContext){
-        super(pContext, SQLITE_DATABASE_CONFIG.getDatabaseName(), null, SQLITE_DATABASE_CONFIG.getVesion());
+        super(pContext, SQLITE_DATABASE_CONFIG.getDataBaseName(), null, SQLITE_DATABASE_CONFIG.getVesion());
         mContext=pContext;
     }
   public static SQLiteHelper getInstance(Context pContext){

@@ -116,4 +116,11 @@ public class SlideMenuView {
             mOnSlideMenuListener.onSlideMenuItemClick(view, _SlideMenuItem);
         }
     }
+    public void RemoveBottomBox()
+    {
+        RelativeLayout _MainLayout = (RelativeLayout)mActivity.findViewById(R.id.layMainBody);
+        _MainLayout.removeView(mRelativeLayout);
+        mRelativeLayout = null;
+    }
+
 }

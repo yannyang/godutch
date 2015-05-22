@@ -13,6 +13,7 @@ import yann.study.database.base.SQLiteDALBase;
 import yann.study.model.UserModel;
 import yann.study.utility.DateTools;
 
+
 /**
  * Created by yann on 2015/5/19.
  * 用户数据操作类
@@ -28,7 +29,7 @@ public class SQLiteDALUser extends SQLiteDALBase {
     }
    public boolean insertUser(UserModel pUserModel){
        ContentValues _ContentValues=createParms(pUserModel);
-       long _NewId=getDatabase().insert(getTableNameAndPK()[0],null,_ContentValues);
+       long _NewId= getDataBase().insert(getTableNameAndPK()[0],null,_ContentValues);
        pUserModel.setUserId((int)_NewId);
        return _NewId>0;
    }
@@ -37,11 +38,11 @@ public class SQLiteDALUser extends SQLiteDALBase {
     }
     public boolean updateUser(String pCondition,UserModel pUserModel){
         ContentValues _ContentValues=createParms(pUserModel);
-        return getDatabase().update(getTableNameAndPK()[0],_ContentValues,pCondition,null)>0;
+        return getDataBase().update(getTableNameAndPK()[0],_ContentValues,pCondition,null)>0;
     }
     public Boolean updateUser(String p_Condition,ContentValues pContentValues)
     {
-        return getDatabase().update("User", pContentValues, p_Condition, null) > 0;
+        return getDataBase().update("User", pContentValues, p_Condition, null) > 0;
     }
 
     public List<UserModel> getUser(String pCondition){
@@ -83,14 +84,14 @@ public class SQLiteDALUser extends SQLiteDALBase {
         UserModel _UserModel=new UserModel();
         _UserModel.setUserId(_Cursor.getInt(_Cursor.getColumnIndex("UserId")));
         _UserModel.setUserName(_Cursor.getString(_Cursor.getColumnIndex("UserName")));
-        _UserModel.setCreateDate(DateTools.parse(_Cursor.getString(_Cursor.getColumnIndex("CreateDate")), null));
-        _UserModel.setState(_Cursor.getInt(_Cursor.getColumnIndex("State")));
+        _UserModel.setCreateDate(DateTools.getDate(_Cursor.getString(_Cursor.getColumnIndex("CreateDate")),"yyyy-MM-dd HH:mm:ss"));
+         _UserModel.setState(_Cursor.getInt(_Cursor.getColumnIndex("State")));
         return _UserModel;
     }
 public ContentValues createParms(UserModel pUserModel){
     ContentValues _ContentValues=new ContentValues();
     _ContentValues.put("UserName",pUserModel.getUserName());
-    _ContentValues.put("CreateDate", DateTools.getDateTime(pUserModel.getCreateDate(), DateTools.DEFAULT_DATETIME_FORMAT));
+    _ContentValues.put("CreateDate",DateTools.getFormatTime(pUserModel.getCreateDate()));
     _ContentValues.put("State",pUserModel.getState());
     return _ContentValues;
 }

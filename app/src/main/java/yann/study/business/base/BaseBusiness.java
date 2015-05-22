@@ -8,7 +8,9 @@ import android.content.Context;
  */
 public class BaseBusiness {
     private Context mContext;
-
+    protected Context GetContext() {
+        return mContext;
+    }
     public BaseBusiness(Context pContext) {
         this.mContext = pContext;
     }
@@ -20,4 +22,5 @@ public class BaseBusiness {
     protected String getString(int pResID,Object[] pObject){
         return  mContext.getString(pResID,pObject);
     }
+
 }

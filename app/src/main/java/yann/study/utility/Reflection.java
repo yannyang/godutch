@@ -8,10 +8,10 @@ import java.lang.reflect.Method;
 
 public class Reflection {
     /**     
-	    * µÃµ½Ä³¸ö¶ÔÏóµÄ¹«¹²ÊôÐÔ     
+	    * ï¿½Ãµï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½     
 	    *     
 	    * @param owner, fieldName     
-	    * @return ¸ÃÊôÐÔ¶ÔÏó     
+	    * @return ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½     
 	    * @throws Exception     
 	    *     
 	    */      
@@ -26,11 +26,11 @@ public class Reflection {
 	    }       
 	     
 	    /**     
-	    * µÃµ½Ä³ÀàµÄ¾²Ì¬¹«¹²ÊôÐÔ     
+	    * ï¿½Ãµï¿½Ä³ï¿½ï¿½Ä¾ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½     
 	    *     
-	    * @param className   ÀàÃû     
-	    * @param fieldName   ÊôÐÔÃû     
-	    * @return ¸ÃÊôÐÔ¶ÔÏó     
+	    * @param className   ï¿½ï¿½ï¿½ï¿½     
+	    * @param fieldName   ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½     
+	    * @return ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½     
 	    * @throws Exception     
 	    */      
 	   public Object getStaticProperty(String className, String fieldName)       
@@ -46,15 +46,15 @@ public class Reflection {
 	     
 	     
 	    /**     
-	    * Ö´ÐÐÄ³¶ÔÏó·½·¨     
+	    * Ö´ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ó·½·ï¿½     
 	    *     
 	    * @param owner     
-	    *            ¶ÔÏó     
+	    *            ï¿½ï¿½ï¿½ï¿½     
 	    * @param methodName     
-	    *            ·½·¨Ãû     
+	    *            ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½     
 	    * @param args     
-	    *            ²ÎÊý     
-	    * @return ·½·¨·µ»ØÖµ     
+	    *            ï¿½ï¿½ï¿½ï¿½     
+	    * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ     
 	    * @throws Exception     
 	    */      
 	   public Object invokeMethod(Object owner, String methodName, Object[] args)       
@@ -75,15 +75,15 @@ public class Reflection {
 
 
 	     /**     
-	    * Ö´ÐÐÄ³ÀàµÄ¾²Ì¬·½·¨     
+	    * Ö´ï¿½ï¿½Ä³ï¿½ï¿½Ä¾ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½     
 	    *     
 	    * @param className     
-	    *            ÀàÃû     
+	    *            ï¿½ï¿½ï¿½ï¿½     
 	    * @param methodName     
-	    *            ·½·¨Ãû     
+	    *            ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½     
 	    * @param args     
-	    *            ²ÎÊýÊý×é     
-	    * @return Ö´ÐÐ·½·¨·µ»ØµÄ½á¹û     
+	    *            ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½     
+	    * @return Ö´ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ØµÄ½ï¿½ï¿½     
 	    * @throws Exception     
 	    */      
 	   public Object invokeStaticMethod(String className, String methodName,       
@@ -105,11 +105,11 @@ public class Reflection {
 
 
 	    /**     
-	    * ÐÂ½¨ÊµÀý     
-	    * @param className  ÀàÃû  
-	    * @param args    ¹¹Ôìº¯ÊýµÄ²ÎÊý   
-	    * Èç¹ûÎÞ¹¹Ôì²ÎÊý£¬args ÌîÐ´Îª null  
-	    * @return ÐÂ½¨µÄÊµÀý     
+	    * ï¿½Â½ï¿½Êµï¿½ï¿½     
+	    * @param className  ï¿½ï¿½ï¿½ï¿½  
+	    * @param args    ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½   
+	    * ï¿½ï¿½ï¿½ï¿½Þ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½args ï¿½ï¿½Ð´Îª null  
+	    * @return ï¿½Â½ï¿½ï¿½ï¿½Êµï¿½ï¿½     
 	    * @throws Exception     
 	    */      
 	   public Object newInstance(String className, Object[] args,Class[] argsType) throws NoSuchMethodException, SecurityException, ClassNotFoundException, 
@@ -139,20 +139,20 @@ public class Reflection {
 
 
 	    /**     
-	    * ÊÇ²»ÊÇÄ³¸öÀàµÄÊµÀý     
-	    * @param obj ÊµÀý     
-	    * @param cls Àà     
-	    * @return Èç¹û obj ÊÇ´ËÀàµÄÊµÀý£¬Ôò·µ»Ø true     
+	    * ï¿½Ç²ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½     
+	    * @param obj Êµï¿½ï¿½     
+	    * @param cls ï¿½ï¿½     
+	    * @return ï¿½ï¿½ï¿½ obj ï¿½Ç´ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ò·µ»ï¿½ true     
 	    */      
 	   public boolean isInstance(Object obj, Class cls) {       
 	       return cls.isInstance(obj);       
 	   }       
 
 	    /**     
-	    * µÃµ½Êý×éÖÐµÄÄ³¸öÔªËØ     
-	    * @param array Êý×é     
-	    * @param index Ë÷Òý     
-	    * @return ·µ»ØÖ¸¶¨Êý×é¶ÔÏóÖÐË÷Òý×é¼þµÄÖµ     
+	    * ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½Ä³ï¿½ï¿½Ôªï¿½ï¿½     
+	    * @param array ï¿½ï¿½ï¿½ï¿½     
+	    * @param index ï¿½ï¿½ï¿½ï¿½     
+	    * @return ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ     
 	    */      
 	   public Object getByArray(Object array, int index) {       
 	       return Array.get(array,index);       

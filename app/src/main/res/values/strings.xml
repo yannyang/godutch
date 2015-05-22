@@ -2,8 +2,9 @@
     <string name="app_name">study</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="ActivityMainTitle">AA费用小助手</string>
     <string name="action_settings">Settings</string>
-
+    <string name="PayoutTypeFlag">消费</string>
     <string name="aa_title">AA费用小助手</string>
 
     <string name="body_title_record_keeping">记录消费</string>

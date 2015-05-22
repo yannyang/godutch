@@ -25,7 +25,7 @@ public abstract class SQLiteDALBase implements SQLiteHelper.SQLiteDataTable {
         this.mContext = pContext;
     }
 
-    public SQLiteDatabase getDatabase() {
+    public SQLiteDatabase getDataBase() {
         if (mSqLiteDatabase == null) {
             mSqLiteDatabase = SQLiteHelper.getInstance(mContext).getWritableDatabase();
         }
@@ -61,7 +61,7 @@ public abstract class SQLiteDALBase implements SQLiteHelper.SQLiteDataTable {
     }
 
     protected boolean delete(String pTableName, String pCondition) {
-        return getDatabase().delete(pTableName, " 1=1 " + pCondition, null) >= 0;
+        return getDataBase().delete(pTableName, " 1=1 " + pCondition, null) >= 0;
     }
     protected List getList(String pSqlText){
         Cursor _Cursor=execSql(pSqlText);
@@ -77,8 +77,8 @@ public abstract class SQLiteDALBase implements SQLiteHelper.SQLiteDataTable {
         return _List;
     }
 
-    protected Cursor execSql(String pSqlText) {
-        return getDatabase().rawQuery(pSqlText, null);
+    public Cursor execSql(String pSqlText) {
+        return getDataBase().rawQuery(pSqlText, null);
     }
 
 }

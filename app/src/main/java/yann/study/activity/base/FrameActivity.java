@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import yann.study.R;
 import yann.study.controls.SlideMenuItem;
@@ -34,6 +35,21 @@ public class FrameActivity extends BaseActivity {
         View _View= LayoutInflater.from(this).inflate(pResID,null);
         RelativeLayout.LayoutParams _LayoutParams= new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,RelativeLayout.LayoutParams.MATCH_PARENT);
         _LinearLayout.addView(_View, _LayoutParams);
+    }
+    /**
+     * 添加Layout到程序Body中
+     * @param pView 要添加的View
+     */
+    protected void appendMainBody(View pView)
+    {
+        LinearLayout _MainBody = (LinearLayout)findViewById(getMainBodyLayoutID());
+        RelativeLayout.LayoutParams _LayoutParams = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,LinearLayout.LayoutParams.FILL_PARENT);
+        _MainBody.addView(pView,_LayoutParams);
+        //_View.setPadding(15,15,15,15);
+    }
+    private int getMainBodyLayoutID()
+    {
+        return R.id.layMainBody;
     }
     //创建滑动菜单
     protected void createSlideMenu(int pResId){
@@ -68,5 +84,19 @@ public class FrameActivity extends BaseActivity {
             }
         }
     }
+    protected void SetTopBarTitle(String pText) {
+//		String _Title = FormatResString(pRestID);
+        TextView _tvTitle = (TextView) findViewById(R.id.tvTitle);
+        _tvTitle.setText(pText);
+
+//		ImageView _ImageView = (ImageView) findViewById(R.id.ivBottomIcon);
+//		_ImageView.setImageResource(R.drawable.account_book_32x32);
+    }
+    protected void RemoveBottomBox()
+    {
+        mSlideMenuView = new SlideMenuView(this);
+        mSlideMenuView.RemoveBottomBox();
+    }
+
 }
 

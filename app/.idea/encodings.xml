@@ -5,7 +5,8 @@
     <file url="file://$PROJECT_DIR$/src/main/java/yann/study/adapter/MainItemAdapter.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/yann/study/adapter/MenuItemAdapter.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/yann/study/database/base/SQLiteDataBaseConfig.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/yann/study/database/base/SQLiteHelper.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/yann/study/database/base/SQLiteHelper.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/yann/study/utility/DateTools.java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

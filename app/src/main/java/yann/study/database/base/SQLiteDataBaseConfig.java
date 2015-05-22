@@ -27,7 +27,7 @@ public class SQLiteDataBaseConfig {
         return INSTANCE;
     }
 
-    public String getDatabaseName(){
+    public String getDataBaseName(){
         return DATABASE_NAME;
     }
     public int getVesion(){
