@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import yann.study.R;
-import yann.study.adapter.MenuItemAdapter;
+import yann.study.adapter.MenuItemAdapterBase;
 
 /**
  * Created by yann on 2015/5/16.
@@ -78,7 +78,7 @@ public class SlideMenuView {
     }
 
     public void bindList() {
-        MenuItemAdapter _MenuItemAdapter = new MenuItemAdapter(mActivity, mList);
+        MenuItemAdapterBase _MenuItemAdapter = new MenuItemAdapterBase(mActivity, mList);
         ListView _ListView = (ListView) mActivity.findViewById(R.id.lvSlideList);
         _ListView.setAdapter(_MenuItemAdapter);
         _ListView.setOnItemClickListener(new OnSlideMenuItemClick());

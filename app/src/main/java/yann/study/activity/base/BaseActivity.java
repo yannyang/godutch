@@ -1,6 +1,7 @@
 package yann.study.activity.base;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -16,6 +17,7 @@ import yann.study.R;
  * 自己创建Activity基础类，方便一些简便操作
  */
 public class BaseActivity extends Activity {
+    private ProgressDialog m_ProgressDialog;
       /**
      * 显示浮出信息
      * @param pMsg 需要显示的信息
@@ -48,9 +50,23 @@ public class BaseActivity extends Activity {
             _Field.set(pDialog, pIsClose);
         } catch (Exception e) {
         }
+
+
     }
 
+    protected void ShowProgressDialog(int p_TitleResID,int p_MessageResID) {
+        m_ProgressDialog = new ProgressDialog(this);
+        m_ProgressDialog.setTitle(getString(p_TitleResID));
+        m_ProgressDialog.setMessage(getString(p_MessageResID));
+        m_ProgressDialog.show();
+    }
 
+    protected void DismissProgressDialog() {
+        if(m_ProgressDialog != null)
+        {
+            m_ProgressDialog.dismiss();
+        }
+    }
     protected AlertDialog ShowAlertDialog(int p_TitelResID,String p_Message,DialogInterface.OnClickListener p_ClickListener)
     {
         String _Title = getResources().getString(p_TitelResID);

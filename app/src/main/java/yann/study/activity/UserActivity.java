@@ -16,19 +16,19 @@ import android.widget.Toast;
 
 import yann.study.R;
 import yann.study.activity.base.FrameActivity;
-import yann.study.adapter.UserItemAdapter;
-import yann.study.business.UserBusiness;
+import yann.study.adapter.AdapterUser;
+import yann.study.business.BusinessUser;
 import yann.study.controls.SlideMenuItem;
 import yann.study.controls.SlideMenuView;
-import yann.study.model.UserModel;
+import yann.study.model.ModelUser;
 import yann.study.utility.RegexTools;
 
 
 public class UserActivity extends FrameActivity implements SlideMenuView.OnSlideMenuListener {
     private ListView mUserListView;
-    private UserItemAdapter mUserItemAdapter;
-    private UserBusiness mBusinessUser;
-    private UserModel mSelectModlUser;
+    private AdapterUser mUserItemAdapter;
+    private BusinessUser mBusinessUser;
+    private ModelUser mSelectModlUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class UserActivity extends FrameActivity implements SlideMenuView.OnSlide
     }
 
     private void initVariable() {
-        mBusinessUser = new UserBusiness(this);
+        mBusinessUser = new BusinessUser(this);
     }
 
     private void initView() {
@@ -60,7 +60,7 @@ public class UserActivity extends FrameActivity implements SlideMenuView.OnSlide
         AdapterContextMenuInfo _AdapterContextMenuInfo = (AdapterContextMenuInfo) menuInfo;
         ListAdapter _ListAdapter = mUserListView.getAdapter();
 
-        mSelectModlUser = (UserModel)_ListAdapter.getItem(_AdapterContextMenuInfo.position);
+        mSelectModlUser = (ModelUser)_ListAdapter.getItem(_AdapterContextMenuInfo.position);
 
         menu.setHeaderIcon(R.drawable.user);
         menu.setHeaderTitle(mSelectModlUser.getUserName());
@@ -99,7 +99,7 @@ public class UserActivity extends FrameActivity implements SlideMenuView.OnSlide
         }
     }
     private void bindData() {
-        mUserItemAdapter = new UserItemAdapter(this);
+        mUserItemAdapter = new AdapterUser(this);
         mUserListView.setAdapter(mUserItemAdapter);
     }
 
@@ -112,18 +112,18 @@ public class UserActivity extends FrameActivity implements SlideMenuView.OnSlide
 
     }
 
-    private void ShowUserAddOrEditDialog(UserModel pUserModel) {
+    private void ShowUserAddOrEditDialog(ModelUser pModelUser) {
         View _View = getLayouInflater().inflate(R.layout.user_add_or_edit, null);
 
         EditText _etUserName = (EditText) _View.findViewById(R.id.etUserName);
 
-        if (pUserModel != null) {
-            _etUserName.setText(pUserModel.getUserName());
+        if (pModelUser != null) {
+            _etUserName.setText(pModelUser.getUserName());
         }
 
         String _Title;
 
-        if (pUserModel == null) {
+        if (pModelUser == null) {
             _Title = getString(R.string.DialogTitleUser, new Object[]{getString(R.string.TitleAdd)});
         } else {
             _Title = getString(R.string.DialogTitleUser, new Object[]{getString(R.string.TitleEdit)});
@@ -133,18 +133,18 @@ public class UserActivity extends FrameActivity implements SlideMenuView.OnSlide
         _Builder.setTitle(_Title)
                 .setView(_View)
                 .setIcon(R.drawable.user)
-                .setNeutralButton(getString(R.string.ButtonTextSave), new OnAddOrEditUserListener(pUserModel, _etUserName, true))
+                .setNeutralButton(getString(R.string.ButtonTextSave), new OnAddOrEditUserListener(pModelUser, _etUserName, true))
                 .setNegativeButton(getString(R.string.ButtonTextCancel), new OnAddOrEditUserListener(null, null, false))
                 .show();
     }
 
 
     private class OnAddOrEditUserListener implements DialogInterface.OnClickListener {
-        private UserModel mModelUser;
+        private ModelUser mModelUser;
         private EditText etUserName;
         private boolean mIsSaveButton;
 
-        public OnAddOrEditUserListener(UserModel pModelUser, EditText petUserName, Boolean pIsSaveButton) {
+        public OnAddOrEditUserListener(ModelUser pModelUser, EditText petUserName, Boolean pIsSaveButton) {
             mModelUser = pModelUser;
             etUserName = petUserName;
             mIsSaveButton = pIsSaveButton;
@@ -158,7 +158,7 @@ public class UserActivity extends FrameActivity implements SlideMenuView.OnSlide
             }
 
             if (mModelUser == null) {
-                mModelUser = new UserModel();
+                mModelUser = new ModelUser();
             }
 
             String _UserName = etUserName.getText().toString().trim();

@@ -13,7 +13,7 @@ import yann.study.adapter.base.AdapterBase;
 import yann.study.business.BusinessAccountBook;
 import yann.study.model.ModelAccountBook;
 
-public class AdapterAccountBook extends AdapterBase {
+public class AdapterBaseAccountBook extends AdapterBase {
 	
 	private class Holder
 	{
@@ -23,7 +23,7 @@ public class AdapterAccountBook extends AdapterBase {
 		TextView tvMoney;
 	}
 	
-	public AdapterAccountBook(Context pContext) {
+	public AdapterBaseAccountBook(Context pContext) {
 		super(pContext, null);
 		BusinessAccountBook _BusinessAccountBook = new BusinessAccountBook(pContext);
 		List _List = _BusinessAccountBook.GetAccountBook("");

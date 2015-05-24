@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import yann.study.R;
 import yann.study.activity.base.FrameActivity;
-import yann.study.adapter.AdapterAccountBook;
+import yann.study.adapter.AdapterBaseAccountBook;
 import yann.study.business.BusinessAccountBook;
 import yann.study.controls.SlideMenuItem;
 import yann.study.controls.SlideMenuView;
@@ -28,7 +28,7 @@ public class ActivityAccountBook extends FrameActivity implements SlideMenuView.
 	
 	private ListView lvAccountBookList;
 	
-	private AdapterAccountBook mAdapterAccountBook;
+	private AdapterBaseAccountBook mAdapterAccountBook;
 	private BusinessAccountBook mBusinessAccountBook;
 	private ModelAccountBook mSelectModlAccountBook;
 	
@@ -90,7 +90,7 @@ public class ActivityAccountBook extends FrameActivity implements SlideMenuView.
     
     public void BindData()
     {
-    	mAdapterAccountBook = new AdapterAccountBook(this);
+    	mAdapterAccountBook = new AdapterBaseAccountBook(this);
     	lvAccountBookList.setAdapter(mAdapterAccountBook);
     	SetTitle();
     }

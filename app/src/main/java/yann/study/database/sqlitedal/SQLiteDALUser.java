@@ -10,7 +10,7 @@ import java.util.List;
 
 import yann.study.R;
 import yann.study.database.base.SQLiteDALBase;
-import yann.study.model.UserModel;
+import yann.study.model.ModelUser;
 import yann.study.utility.DateTools;
 
 
@@ -27,17 +27,17 @@ public class SQLiteDALUser extends SQLiteDALBase {
     protected String[] getTableNameAndPK() {
         return new String[]{"User","UserId"};
     }
-   public boolean insertUser(UserModel pUserModel){
-       ContentValues _ContentValues=createParms(pUserModel);
+   public boolean insertUser(ModelUser pModelUser){
+       ContentValues _ContentValues=createParms(pModelUser);
        long _NewId= getDataBase().insert(getTableNameAndPK()[0],null,_ContentValues);
-       pUserModel.setUserId((int)_NewId);
+       pModelUser.setUserId((int)_NewId);
        return _NewId>0;
    }
     public boolean deleteUser(String pCondition){
         return delete(getTableNameAndPK()[0],pCondition);
     }
-    public boolean updateUser(String pCondition,UserModel pUserModel){
-        ContentValues _ContentValues=createParms(pUserModel);
+    public boolean updateUser(String pCondition,ModelUser pModelUser){
+        ContentValues _ContentValues=createParms(pModelUser);
         return getDataBase().update(getTableNameAndPK()[0],_ContentValues,pCondition,null)>0;
     }
     public Boolean updateUser(String p_Condition,ContentValues pContentValues)
@@ -45,16 +45,16 @@ public class SQLiteDALUser extends SQLiteDALBase {
         return getDataBase().update("User", pContentValues, p_Condition, null) > 0;
     }
 
-    public List<UserModel> getUser(String pCondition){
+    public List<ModelUser> getUser(String pCondition){
         String _SqlText="Select * From User Where 1=1 "+pCondition;
         return getList(_SqlText);
     }
     private void initDefaultData(SQLiteDatabase pSQLiteDatabase){
-        UserModel _UserModel=new UserModel();
+        ModelUser _ModelUser =new ModelUser();
         String _UserName[]=getContext().getResources().getStringArray(R.array.InitUserName);
         for (int i=0;i<_UserName.length;i++){
-            _UserModel.setUserName(_UserName[i]);
-            ContentValues _ContentValues=createParms(_UserModel);
+            _ModelUser.setUserName(_UserName[i]);
+            ContentValues _ContentValues=createParms(_ModelUser);
             pSQLiteDatabase.insert(getTableNameAndPK()[0],null,_ContentValues);
         }
     }
@@ -81,18 +81,18 @@ public class SQLiteDALUser extends SQLiteDALBase {
 
     @Override
     protected Object findModel(Cursor _Cursor) {
-        UserModel _UserModel=new UserModel();
-        _UserModel.setUserId(_Cursor.getInt(_Cursor.getColumnIndex("UserId")));
-        _UserModel.setUserName(_Cursor.getString(_Cursor.getColumnIndex("UserName")));
-        _UserModel.setCreateDate(DateTools.getDate(_Cursor.getString(_Cursor.getColumnIndex("CreateDate")),"yyyy-MM-dd HH:mm:ss"));
-         _UserModel.setState(_Cursor.getInt(_Cursor.getColumnIndex("State")));
-        return _UserModel;
+        ModelUser _ModelUser =new ModelUser();
+        _ModelUser.setUserId(_Cursor.getInt(_Cursor.getColumnIndex("UserId")));
+        _ModelUser.setUserName(_Cursor.getString(_Cursor.getColumnIndex("UserName")));
+        _ModelUser.setCreateDate(DateTools.getDate(_Cursor.getString(_Cursor.getColumnIndex("CreateDate")),"yyyy-MM-dd HH:mm:ss"));
+         _ModelUser.setState(_Cursor.getInt(_Cursor.getColumnIndex("State")));
+        return _ModelUser;
     }
-public ContentValues createParms(UserModel pUserModel){
+public ContentValues createParms(ModelUser pModelUser){
     ContentValues _ContentValues=new ContentValues();
-    _ContentValues.put("UserName",pUserModel.getUserName());
-    _ContentValues.put("CreateDate",DateTools.getFormatTime(pUserModel.getCreateDate()));
-    _ContentValues.put("State",pUserModel.getState());
+    _ContentValues.put("UserName", pModelUser.getUserName());
+    _ContentValues.put("CreateDate",DateTools.getFormatTime(pModelUser.getCreateDate()));
+    _ContentValues.put("State", pModelUser.getState());
     return _ContentValues;
 }
 

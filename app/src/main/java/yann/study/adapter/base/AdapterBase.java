@@ -10,12 +10,12 @@ import java.util.List;
  * Created by yann on 2015/5/18.
  * ��Ŀ������
  */
-public abstract class  GodutchBaseAdapter extends BaseAdapter {
+public abstract class AdapterBase extends BaseAdapter {
     private List mList;
     private Context mContext;
     private LayoutInflater mLayoutInflater;
 
-    public GodutchBaseAdapter(Context pContext,List pList) {
+    public AdapterBase(Context pContext, List pList) {
         mContext=pContext;
         mList=pList;
         mLayoutInflater=LayoutInflater.from(mContext);

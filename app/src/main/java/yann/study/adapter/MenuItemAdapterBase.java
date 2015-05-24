@@ -8,18 +8,18 @@ import android.widget.TextView;
 import java.util.List;
 
 import yann.study.R;
-import yann.study.adapter.base.GodutchBaseAdapter;
+import yann.study.adapter.base.AdapterBase;
 import yann.study.controls.SlideMenuItem;
 
 /**
  * Created by yann on 2015/5/13.
  * 功能主菜单项目适配器 *
  */
-public class MenuItemAdapter extends GodutchBaseAdapter {
+public class MenuItemAdapterBase extends AdapterBase {
     private  class Holder{
          TextView tvMenuListItem;
     }
-    public MenuItemAdapter(Context pContext, List pList) {
+    public MenuItemAdapterBase(Context pContext, List pList) {
         super(pContext, pList);
     }
 

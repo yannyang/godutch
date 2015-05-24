@@ -75,21 +75,21 @@ public class MainActivity extends FrameActivity implements SlideMenuView.OnSlide
                 openActivity(ActivityCategory.class);
                 return;
             }
-            /* if(_MenuName.equals(getString(R.string.appGridTextPayoutAdd)))
+            if(_MenuName.equals(getString(R.string.body_title_record_keeping)))
             {
                 openActivity(ActivityPayoutAddOrEdit.class);
                 return;
             }
-            if(_MenuName.equals(getString(R.string.appGridTextPayoutManage)))
+            if(_MenuName.equals(getString(R.string.body_title_keeping_querying)))
             {
                 openActivity(ActivityPayout.class);
                 return;
             }
-            if(_MenuName.equals(getString(R.string.appGridTextStatisticsManage)))
+            if(_MenuName.equals(getString(R.string.body_title_count_manage)))
             {
                 openActivity(ActivityStatistics.class);
                 return;
-            }*/
+            }
         }
     }
 }

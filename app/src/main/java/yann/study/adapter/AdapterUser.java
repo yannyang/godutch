@@ -9,26 +9,25 @@ import android.widget.TextView;
 import java.util.List;
 
 import yann.study.R;
-import yann.study.adapter.base.GodutchBaseAdapter;
-import yann.study.business.UserBusiness;
-import yann.study.controls.SlideMenuItem;
-import yann.study.model.UserModel;
+import yann.study.adapter.base.AdapterBase;
+import yann.study.business.BusinessUser;
+import yann.study.model.ModelUser;
 
 /**
  * Created by yann on 2015/5/13.
  * 功能主菜单项目适配器 *
  */
-public class UserItemAdapter extends GodutchBaseAdapter {
+public class AdapterUser extends AdapterBase {
     private  class Holder{
         ImageView ivUserIcon;
          TextView tvUserListName;
     }
-    public UserItemAdapter(Context pContext)
+    public AdapterUser(Context pContext)
     {
         super(pContext, null);
-        UserBusiness _UserBusiness=new UserBusiness(pContext);
-        List<UserModel> _UserModels=_UserBusiness.getNotHideUser();
-        setList(_UserModels);
+        BusinessUser _BusinessUser =new BusinessUser(pContext);
+        List<ModelUser> _ModelUsers = _BusinessUser.getNotHideUser();
+        setList(_ModelUsers);
     }
 
     private Context mContext;
@@ -48,9 +47,9 @@ public class UserItemAdapter extends GodutchBaseAdapter {
         }else{
             _Holder=(Holder)convertView.getTag();
         }
-        UserModel _UserModel = (UserModel) getList().get(position);
+        ModelUser _ModelUser = (ModelUser) getList().get(position);
         _Holder.ivUserIcon.setImageResource(R.drawable.user);
-        _Holder.tvUserListName.setText(_UserModel.getUserName());
+        _Holder.tvUserListName.setText(_ModelUser.getUserName());
         return convertView;
     }
 }

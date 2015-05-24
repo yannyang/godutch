@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by yann on 2015/5/19.
  * 用户实体
  */
-public class UserModel {
+public class ModelUser {
     //用户表ID主键
     private int mUserId;
     //用户姓名

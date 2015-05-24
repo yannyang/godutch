@@ -21,17 +21,17 @@
       <activity android:name=".activity.ActivityCategory" />
         <activity android:name=".activity.ActivityCategoryAddOrEdit" />
         <activity android:name=".activity.ActivityCategoryChart" />
-        <!--   <activity android:name=".activity.ActivityPayoutAddOrEdit" />
+        <activity android:name=".activity.ActivityPayoutAddOrEdit" />
          <activity android:name=".activity.ActivityPayout" />
          <activity android:name=".activity.ActivityStatistics" />
-
-         <receiver android:name=".receiver.ReceiverDatabaseBackup" />
-         <receiver android:name=".receiver.ReceiverBootStart">
-             　　		<intent-filter>
-             　　			<action android:name="android.intent.action.BOOT_COMPLETED" />
-         </intent-filter>
-             　　	</receiver>
-         <service android:name=".service.ServiceDatabaseBackup" />-->
+        <!--
+                <receiver android:name=".receiver.ReceiverDatabaseBackup" />
+                <receiver android:name=".receiver.ReceiverBootStart">
+                    　　		<intent-filter>
+                    　　			<action android:name="android.intent.action.BOOT_COMPLETED" />
+                </intent-filter>
+                    　　	</receiver>
+                <service android:name=".service.ServiceDatabaseBackup" />-->
     </application>
 
 </manifest>
